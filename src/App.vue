@@ -1,28 +1,39 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div id="app"
+        @mouseup="onMouseUp($event)"
+    >
+        <ToolBar></ToolBar>
+        <div class="d-flex align-items-stretch">
+            <SideBar></SideBar>
+            <Context></Context>
+        </div>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import ToolBar from './components/ToolBar.vue'
+    import SideBar from './components/SideBar.vue'
+    import Context from './components/Context.vue'
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        name: 'app',
+        components: {
+            ToolBar, SideBar, Context
+        },
+        data() {
+            return {
+            }
+        },
+        methods: {
+            onMouseUp() {
+                this.$store.commit('FIX_CONTAINER')
+            }
+        }
+    }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    body {
+        margin: 0;
+    }
 </style>
